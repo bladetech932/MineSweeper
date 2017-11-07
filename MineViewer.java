@@ -138,7 +138,7 @@ class MineViewer extends JFrame {
   public void updateField(char[][] mineField, char[][] playField){
     for (int i = 0;i<mineField.length;i++) {
       for (int j = 0;j<mineField.length;j++) {
-        if (playField[i][j]=='M') {
+        if (mineField[i][j]=='M') {
           btn[i][j].setIcon(imageMine);
         }
         else if (playField[i][j]=='F') {
