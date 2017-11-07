@@ -91,8 +91,7 @@ class MineModel {
   }
   public void mineCheck(int x, int y) {
     if (mineField[x][y]=='M') {
-      //playField = mineField;
-      System.out.println("mine found");
+      playField = mineField;
     }
   }
   public char[][] getMineField(){
