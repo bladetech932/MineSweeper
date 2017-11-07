@@ -30,7 +30,8 @@ class MineModel {
     mineField = new char[customSettings[0]][customSettings[1]];
     playField = new char[customSettings[0]][customSettings[1]];
     setPlayField();
-    setMine(customMineCount, getColumns(), getRows());
+    setMineField();
+    setMine(customMineCount);
   }
   public MineModel(int gameMode) { //preset mode selection
     this.gameMode = gameMode;
@@ -57,8 +58,7 @@ class MineModel {
     }
     setPlayField();
     setMineField();
-    setMine(mineCount, getColumns(), getRows());
-    mineCounter(getRows(), getColumns());
+    setMine(mineCount);
   }
 
   //getter methods
@@ -68,17 +68,17 @@ class MineModel {
   public int getColumns() {
     return playField[0].length;
   }
-  public void setMine(int mineCount, int height, int width){
+  public void setMine(int mineCount){
       int x;
       int y;
       int count = 0;
 
       while(count < mineCount){
-         x = (int)(Math.random()*width);
-         y = (int)(Math.random()*height);
+         x = (int)(Math.random()*getColumns());
+         y = (int)(Math.random()*getRows());
 
-         if(mineField[x][y] != 'M'){
-           mineField[x][y] = 'M';
+         if(mineField[y][x] != 'M'){
+           mineField[y][x] = 'M';
            mineCounter(x,y);
            count++;
          }
@@ -99,7 +99,7 @@ class MineModel {
 
   }
   public void mineCheck(int x, int y) {
-    if (mineField[x][y]=='M') {
+    if (mineField[y][x]=='M') {
       playField = mineField;
     }
   }
@@ -127,21 +127,21 @@ class MineModel {
 
   public void mineCounter(int x, int y){
 
-        try {if(mineField[x-1][y] != 'M')   {mineField[x-1][y]++;}}
+        try {if(mineField[y-1][x] != 'M')   {mineField[y-1][x]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[x][y+1] != 'M')   {mineField[x][y+1]++;}}
+        try {if(mineField[y][x+1] != 'M')   {mineField[y][x+1]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[x+1][y] != 'M')   {mineField[x+1][y]++;}}
+        try {if(mineField[y+1][x] != 'M')   {mineField[y+1][x]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[x][y-1] != 'M')   {mineField[x][y-1]++;}}
+        try {if(mineField[y][x-1] != 'M')   {mineField[y][x-1]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[x-1][y-1] != 'M') {mineField[x-1][y-1]++;}}
+        try {if(mineField[y-1][x-1] != 'M') {mineField[y-1][x-1]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[x-1][y+1] != 'M') {mineField[x-1][y+1]++;}}
+        try {if(mineField[y-1][x+1] != 'M') {mineField[y-1][x+1]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[x+1][y-1] != 'M') {mineField[x+1][y-1]++;}}
+        try {if(mineField[y+1][x-1] != 'M') {mineField[y+1][x-1]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[x+1][y+1] != 'M') {mineField[x+1][y+1]++;}}
+        try {if(mineField[y+1][x+1] != 'M') {mineField[y+1][x+1]++;}}
         catch(IndexOutOfBoundsException e){}
   }
 
