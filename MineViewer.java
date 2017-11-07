@@ -86,7 +86,6 @@ class MineViewer extends JFrame {
   }
 
   public JMenu getFileMenu(MineViewer viewer) {
-
 		JMenu file = new JMenu("File");
 		JMenuItem save = new JMenuItem("Save");
 		JMenuItem load = new JMenuItem("Load");
@@ -100,11 +99,32 @@ class MineViewer extends JFrame {
 		file.add(save);
 		file.add(quit);
 		return file;
-	}
-
-  public void setFlag(int x, int y){
-    btn[x][y].setIcon(flag);
   }
+
+  public JMenu getNewGameMenu(MineSweeperFrame frame) {
+
+		// The JMenuBar that will Control the Elements
+
+		// The NewGame Menu elements
+		JMenu newGame = new JMenu("New Game");
+		JMenuItem easy = new JMenuItem("Easy");
+		JMenuItem medium = new JMenuItem("Medium");
+		JMenuItem hard = new JMenuItem("Hard");
+		JMenuItem custom = new JMenuItem("Custom");
+
+		// Adding Action Listener to the elements
+		//easy.addActionListener(new MenuListener(GameLogic.NEW_GAME,GameLogic.EASY, frame));
+		//medium.addActionListener(new MenuListener(GameLogic.NEW_GAME,GameLogic.MEDIUM, frame));
+		//hard.addActionListener(new MenuListener(GameLogic.NEW_GAME,GameLogic.HARD, frame));
+		//custom.addActionListener(new MenuListener(GameLogic.NEW_GAME,GameLogic.CUSTOM, frame));
+
+		// Adding them to the newGame Menu
+		newGame.add(easy);
+		newGame.add(medium);
+		newGame.add(hard);
+		newGame.add(custom);
+		return newGame;
+	}
 
   public void showMines(char[][] mineField){
     for (int i = 0;i<mineField.length;i++) {
