@@ -30,6 +30,7 @@ class MineModel {
     customMineCount = customSettings[2];
     mineField = new char[customSettings[0]][customSettings[1]];
     playField = new char[customSettings[0]][customSettings[1]];
+    setPlayField();
     setMine(customMineCount, getColumns(), getRows());
   }
   public MineModel(int gameMode) { //preset mode selection
@@ -39,18 +40,22 @@ class MineModel {
         mineField = new char[easyGridSize][easyGridSize];
         playField = new char[easyGridSize][easyGridSize];
         mineCount = easyMineCount;
+        setPlayField();
         setMine(mineCount, getColumns(), getRows());
         break;
       case MEDIUM:
         mineField = new char[medGridSize][medGridSize];
         playField = new char[medGridSize][medGridSize];
         mineCount = medMineCount;
+        setPlayField();
         setMine(mineCount, getColumns(), getRows());
+        mineCounter(getRows(), getColumns());
         break;
       case HARD:
         mineField = new char[hardGridSize][hardGridSize];
         playField = new char[hardGridSize][hardGridSize];
         mineCount = hardMineCount;
+        setPlayField();
         setMine(mineCount, getColumns(), getRows());
         break;
       case CUSTOM:
@@ -105,6 +110,38 @@ class MineModel {
   }
   public char[][] getPlayField(){
     return playField;
+  }
+
+  public void setPlayField(){
+    for (int i=0;i<playField.length; i++) {
+      for (int j=0;j<playField[i].length; j++){
+        playField[i][j] = '0';
+      }
+    }
+  }
+
+  public void mineCounter(int x, int y){
+    for (int i=0; i<y ; i++ ) {
+      for (int j=0; j<x ; j++ ) {
+
+        try {if(mineField[i-1][j] != 'M')   {playField[i-1][j]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[i][j+1] != 'M')   {playField[i][j+1]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[i+1][j] != 'M')   {playField[i+1][j]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[i][j-1] != 'M')   {playField[i][j-1]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[i-1][j-1] != 'M') {playField[i-1][j-1]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[i-1][j+1] != 'M') {playField[i-1][j+1]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[i+1][j-1] != 'M') {playField[i+1][j-1]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[i+1][j+1] != 'M') {playField[i+1][j+1]++;}}
+        catch(IndexOutOfBoundsException e){}
+      }
+    }
   }
 
 }

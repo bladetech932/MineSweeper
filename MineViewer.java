@@ -8,6 +8,7 @@ class MineViewer extends JFrame {
   private ImageIcon mine = new ImageIcon("mine.png");
 	private ImageIcon flag = new ImageIcon("flag.png");
   private ImageIcon one = new ImageIcon("1.png");
+  private ImageIcon two = new ImageIcon("2.png");
   private Object[] gameModes = {"Custom","Easy","Medium","Hard"};
   Color superGray = new Color(116,116,116);
   private JPanel panel;
@@ -141,7 +142,7 @@ class MineViewer extends JFrame {
           btn[i][j].setIcon(flag);
         }
         else{
-          btn[i][j].setIcon(null);
+          btn[i][j].setIcon(two);
         }
       }
     }
