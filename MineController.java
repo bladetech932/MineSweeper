@@ -23,6 +23,7 @@ class MineController extends MouseAdapter {
     if (SwingUtilities.isLeftMouseButton(e) == true) {
       System.out.println("Left ");
       System.out.println(tempBtn.getName());
+      model.mineCheck(x,y);
     }
     if (SwingUtilities.isRightMouseButton(e) == true) {
       System.out.println(tempBtn.getName());
