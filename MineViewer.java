@@ -5,8 +5,8 @@ import java.util.*;
 
 class MineViewer extends JFrame {
   private MineModel model;
-  private ImageIcon imagemine = new ImageIcon("mine.png");
-	private ImageIcon imageflag = new ImageIcon("flag.png");
+  private ImageIcon imageMine = new ImageIcon("mine.png");
+	private ImageIcon imageFlag = new ImageIcon("flag.png");
   private ImageIcon imageOne = new ImageIcon("1.png");
   private ImageIcon imageTwo = new ImageIcon("2.png");
   private ImageIcon imageThree = new ImageIcon("3.png");
@@ -16,7 +16,7 @@ class MineViewer extends JFrame {
   private ImageIcon imageSeven = new ImageIcon("7.png");
   private ImageIcon imageEight = new ImageIcon("8.png");
   private Object[] gameModes = {"Custom","Easy","Medium","Hard"};
-  Color superGray = new Color(116,116,116);
+  private Color superGrey = new Color(116,116,116);
   private JPanel panel;
   private Container pane;
   JButton[][] btn;
@@ -138,11 +138,11 @@ class MineViewer extends JFrame {
   public void updateField(char[][] mineField, char[][] playField){
     for (int i = 0;i<mineField.length;i++) {
       for (int j = 0;j<mineField.length;j++) {
-        if (playField[i][j]=='M') {
+        if (mineField[i][j]=='M') {
           btn[i][j].setIcon(imageMine);
         }
         else if (playField[i][j]=='F') {
-          btn[i][j].setIcon(imgaeFlag);
+          btn[i][j].setIcon(imageFlag);
         }
         else if (playField[i][j]=='0') {
           btn[i][j].setBackground(superGrey);
@@ -163,7 +163,7 @@ class MineViewer extends JFrame {
           btn[i][j].setIcon(imageFive);
         }
         else if (playField[i][j]=='6') {
-          btn[i][j].setIcon(six);
+          btn[i][j].setIcon(imageSix);
         }
         else if (playField[i][j]=='7') {
           btn[i][j].setIcon(imageSeven);
