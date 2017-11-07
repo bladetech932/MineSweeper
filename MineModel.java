@@ -220,4 +220,3 @@ class MineModel {
   }
 
 }
->>>>>>> before discard
