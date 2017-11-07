@@ -63,15 +63,22 @@ class MineModel {
     return playField[0].length;
   }
   public void setMine(int mineCount, int height, int width){
+      int x;
+      int y;
+      int count = 0;
 
-    int x = (int)(Math.random()*height);
-    int y = (int)(Math.random()*width);
+      while(count <= mineCount){
+         x = (int)(Math.random()*height);
+         y = (int)(Math.random()*width);
 
-     if(mineField[x][y] != 'M'){
-       mineField[x][y] = 'M';
+         if(mineField[x][y] != 'M'){
+           mineField[x][y] = 'M';
+           count++;
+         }
+         else{
+           continue;
+         }
      }
-     else{setMine(mineCount,height,width);}
-
   }
   public void setFlag(int x, int y) {
   //  playField[x][y] = 'F';
