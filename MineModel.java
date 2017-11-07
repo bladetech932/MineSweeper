@@ -39,22 +39,24 @@ class MineModel {
         mineField = new char[easyGridSize][easyGridSize];
         playField = new char[easyGridSize][easyGridSize];
         mineCount = easyMineCount;
+        setMine(mineCount, getColumns(), getRows());
         break;
       case MEDIUM:
         mineField = new char[medGridSize][medGridSize];
         playField = new char[medGridSize][medGridSize];
         mineCount = medMineCount;
+        setMine(mineCount, getColumns(), getRows());
         break;
       case HARD:
         mineField = new char[hardGridSize][hardGridSize];
         playField = new char[hardGridSize][hardGridSize];
         mineCount = hardMineCount;
+        setMine(mineCount, getColumns(), getRows());
         break;
       case CUSTOM:
         System.out.println("ERROR");
         break;
     }
-    setMine(mineCount, getColumns(), getRows());
   }
 
   //getter methods
@@ -84,10 +86,19 @@ class MineModel {
   }
 
   public void setFlag(int x, int y) {
+<<<<<<< HEAD
     if(playField[x][y] !='F') {
         playField[x][y] = 'F';
     }
     else { playField[x][y] = '0';}
+=======
+    if(playField[x][y] !='F'){
+      playField[x][y] = 'F';
+    }
+    else if (playField[x][y] == 'F') {
+      playField[x][y] = '0';
+    }
+>>>>>>> ebcd6fa7f136118cf9d864c5740ada5c0e3270c6
 
   }
   public void mineCheck(int x, int y) {
