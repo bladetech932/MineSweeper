@@ -7,8 +7,9 @@ class MineViewer extends JFrame {
   private MineModel model;
   private ImageIcon mine = new ImageIcon("mine.png");
 	private ImageIcon flag = new ImageIcon("flag.png");
+  private ImageIcon one = new ImageIcon("1.png");
   private Object[] gameModes = {"Custom","Easy","Medium","Hard"};
-  Color purple = new Color(255,255,255);
+  Color superGray = new Color(116,116,116);
   private JPanel panel;
   private Container pane;
   JButton[][] btn;
@@ -49,7 +50,7 @@ class MineViewer extends JFrame {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0;j < columns; j++) {
 				btn[i][j] = new JButton();
-				btn[i][j].setBackground(purple);
+				btn[i][j].setBackground(superGray);
         btn[i][j].setName(i+","+j);
 				btn[i][j].addMouseListener(new MineController(model, this));
         panel.add(btn[i][j]);
@@ -133,7 +134,10 @@ class MineViewer extends JFrame {
         if (playField[i][j]=='M') {
           btn[i][j].setIcon(mine);
         }
-        if (playField[i][j]=='F') {
+        else if (playField[i][j]=='0') {
+          btn[i][j].setIcon(one);
+        }
+        else if (playField[i][j]=='F') {
           btn[i][j].setIcon(flag);
         }
         else{
