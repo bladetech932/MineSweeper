@@ -114,7 +114,7 @@ class MineModel {
   public void setPlayField(){
     for (int i=0;i<playField.length; i++) {
       for (int j=0;j<playField[i].length; j++){
-        playField[i][j] = '0';
+        playField[i][j] = 'U';
       }
     }
   }
@@ -123,21 +123,21 @@ class MineModel {
     for (int i=0; i<y ; i++ ) {
       for (int j=0; j<x ; j++ ) {
 
-        try {if(mineField[i-1][j] != 'M')   {playField[i-1][j]++;}}
+        try {if(mineField[i-1][j] != 'M')   {mineField[i-1][j]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i][j+1] != 'M')   {playField[i][j+1]++;}}
+        try {if(mineField[i][j+1] != 'M')   {mineField[i][j+1]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i+1][j] != 'M')   {playField[i+1][j]++;}}
+        try {if(mineField[i+1][j] != 'M')   {mineField[i+1][j]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i][j-1] != 'M')   {playField[i][j-1]++;}}
+        try {if(mineField[i][j-1] != 'M')   {mineField[i][j-1]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i-1][j-1] != 'M') {playField[i-1][j-1]++;}}
+        try {if(mineField[i-1][j-1] != 'M') {mineField[i-1][j-1]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i-1][j+1] != 'M') {playField[i-1][j+1]++;}}
+        try {if(mineField[i-1][j+1] != 'M') {mineField[i-1][j+1]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i+1][j-1] != 'M') {playField[i+1][j-1]++;}}
+        try {if(mineField[i+1][j-1] != 'M') {mineField[i+1][j-1]++;}}
         catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i+1][j+1] != 'M') {playField[i+1][j+1]++;}}
+        try {if(mineField[i+1][j+1] != 'M') {mineField[i+1][j+1]++;}}
         catch(IndexOutOfBoundsException e){}
       }
     }
