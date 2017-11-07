@@ -30,6 +30,7 @@ class MineModel {
     customMineCount = customSettings[2];
     mineField = new char[customSettings[0]][customSettings[1]];
     playField = new char[customSettings[0]][customSettings[1]];
+    setMine(customMineCount, getColumns(), getRows());
   }
   public MineModel(int gameMode) { //preset mode selection
     this.gameMode = gameMode;
@@ -38,16 +39,19 @@ class MineModel {
         mineField = new char[easyGridSize][easyGridSize];
         playField = new char[easyGridSize][easyGridSize];
         mineCount = easyMineCount;
+        setMine(mineCount, getColumns(), getRows());
         break;
       case MEDIUM:
         mineField = new char[medGridSize][medGridSize];
         playField = new char[medGridSize][medGridSize];
         mineCount = medMineCount;
+        setMine(mineCount, getColumns(), getRows());
         break;
       case HARD:
         mineField = new char[hardGridSize][hardGridSize];
         playField = new char[hardGridSize][hardGridSize];
         mineCount = hardMineCount;
+        setMine(mineCount, getColumns(), getRows());
         break;
       case CUSTOM:
         System.out.println("ERROR");
@@ -67,9 +71,9 @@ class MineModel {
       int y;
       int count = 0;
 
-      while(count <= mineCount){
-         x = (int)(Math.random()*height);
-         y = (int)(Math.random()*width);
+      while(count < mineCount){
+         x = (int)(Math.random()*width);
+         y = (int)(Math.random()*height);
 
          if(mineField[x][y] != 'M'){
            mineField[x][y] = 'M';
@@ -80,13 +84,16 @@ class MineModel {
          }
      }
   }
+
   public void setFlag(int x, int y) {
-  //  playField[x][y] = 'F';
+    if(playField[x][y] !='F'){
+        playField[x][y] = 'F';
+    }else{playField[x][y] = 'U';}
   }
   public void mineCheck(int x, int y) {
-    //if (mineField[x][y]=='M') {
-
-    //}
+    if (mineField[x][y]=='M') {
+      playField = mineField;
+    }
   }
   public char[][] getMineField(){
     return mineField;
