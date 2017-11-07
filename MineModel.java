@@ -1,4 +1,3 @@
-import javax.swing.JOptionPane;
 class MineModel {
 
   MineViewer viewer;
@@ -96,7 +95,7 @@ class MineModel {
       playField[x][y] = 'F';
     }
     else if(playField[x][y] == 'F') {
-      playField[x][y] = '0';
+      playField[x][y] = 'U';
     }
 
   }
@@ -105,7 +104,7 @@ class MineModel {
       playField = mineField;
     }
   }
-  public char[][] getMineField(){
+  public char[][] getMineField() {
     return mineField;
   }
   public char[][] getPlayField(){
