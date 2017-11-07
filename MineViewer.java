@@ -32,6 +32,7 @@ class MineViewer extends JFrame {
     Container contentpane = getContentPane();
     JMenuBar menuBar = new JMenuBar();
     menuBar.add(getFileMenu(this));
+    menuBar.add(getNewGameMenu(this));
     contentpane.add(menuBar, BorderLayout.NORTH);
 
     panel = new JPanel();
@@ -101,7 +102,7 @@ class MineViewer extends JFrame {
 		return file;
   }
 
-  public JMenu getNewGameMenu(MineSweeperFrame frame) {
+  public JMenu getNewGameMenu(MineViewer view) {
 
 		// The JMenuBar that will Control the Elements
 
@@ -126,11 +127,14 @@ class MineViewer extends JFrame {
 		return newGame;
 	}
 
-  public void showMines(char[][] mineField){
+  public void updateField(char[][] mineField, char[][] playField){
     for (int i = 0;i<mineField.length;i++) {
       for (int j = 0;j<mineField.length;j++) {
         if (mineField[i][j]=='M') {
           btn[i][j].setIcon(mine);
+        }
+        if (playField[i][j]=='F') {
+          btn[i][j].setIcon(flag);
         }
       }
     }
