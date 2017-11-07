@@ -86,9 +86,13 @@ class MineModel {
   }
 
   public void setFlag(int x, int y) {
+<<<<<<< HEAD
     if(playField[x][y] !='F'){
         playField[x][y] = 'F';
     }else{playField[x][y] = 'U';}
+=======
+    playField[x][y] = 'F';
+>>>>>>> e44ef543d106d52cd90c2576f5a8892310e8b948
   }
   public void mineCheck(int x, int y) {
     if (mineField[x][y]=='M') {
@@ -97,6 +101,9 @@ class MineModel {
   }
   public char[][] getMineField(){
     return mineField;
+  }
+  public char[][] getPlayField(){
+    return playField;
   }
 
 }
