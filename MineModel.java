@@ -39,28 +39,26 @@ class MineModel {
         mineField = new char[easyGridSize][easyGridSize];
         playField = new char[easyGridSize][easyGridSize];
         mineCount = easyMineCount;
-        setPlayField();
-        setMine(mineCount, getColumns(), getRows());
         break;
       case MEDIUM:
         mineField = new char[medGridSize][medGridSize];
         playField = new char[medGridSize][medGridSize];
         mineCount = medMineCount;
-        setPlayField();
-        setMine(mineCount, getColumns(), getRows());
-        mineCounter(getRows(), getColumns());
+
         break;
       case HARD:
         mineField = new char[hardGridSize][hardGridSize];
         playField = new char[hardGridSize][hardGridSize];
         mineCount = hardMineCount;
-        setPlayField();
-        setMine(mineCount, getColumns(), getRows());
         break;
       case CUSTOM:
         System.out.println("ERROR");
         break;
     }
+    setPlayField();
+    setMineField();
+    setMine(mineCount, getColumns(), getRows());
+    mineCounter(getRows(), getColumns());
   }
 
   //getter methods
@@ -81,6 +79,7 @@ class MineModel {
 
          if(mineField[x][y] != 'M'){
            mineField[x][y] = 'M';
+           mineCounter(x,y);
            count++;
          }
          else{
@@ -118,29 +117,32 @@ class MineModel {
       }
     }
   }
-
-  public void mineCounter(int x, int y){
-    for (int i=0; i<y ; i++ ) {
-      for (int j=0; j<x ; j++ ) {
-
-        try {if(mineField[i-1][j] != 'M')   {mineField[i-1][j]++;}}
-        catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i][j+1] != 'M')   {mineField[i][j+1]++;}}
-        catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i+1][j] != 'M')   {mineField[i+1][j]++;}}
-        catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i][j-1] != 'M')   {mineField[i][j-1]++;}}
-        catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i-1][j-1] != 'M') {mineField[i-1][j-1]++;}}
-        catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i-1][j+1] != 'M') {mineField[i-1][j+1]++;}}
-        catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i+1][j-1] != 'M') {mineField[i+1][j-1]++;}}
-        catch(IndexOutOfBoundsException e){}
-        try {if(mineField[i+1][j+1] != 'M') {mineField[i+1][j+1]++;}}
-        catch(IndexOutOfBoundsException e){}
+  public void setMineField(){
+    for (int i=0;i<mineField.length; i++) {
+      for (int j=0;j<mineField[i].length; j++){
+        mineField[i][j] = '0';
       }
     }
+  }
+
+  public void mineCounter(int x, int y){
+
+        try {if(mineField[x-1][y] != 'M')   {mineField[x-1][y]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[x][y+1] != 'M')   {mineField[x][y+1]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[x+1][y] != 'M')   {mineField[x+1][y]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[x][y-1] != 'M')   {mineField[x][y-1]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[x-1][y-1] != 'M') {mineField[x-1][y-1]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[x-1][y+1] != 'M') {mineField[x-1][y+1]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[x+1][y-1] != 'M') {mineField[x+1][y-1]++;}}
+        catch(IndexOutOfBoundsException e){}
+        try {if(mineField[x+1][y+1] != 'M') {mineField[x+1][y+1]++;}}
+        catch(IndexOutOfBoundsException e){}
   }
 
 }
