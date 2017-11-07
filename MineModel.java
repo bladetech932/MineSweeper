@@ -89,7 +89,7 @@ class MineModel {
     if(playField[x][y] !='F'){
         playField[x][y] = 'F';
     } else{playField[x][y] = 'U';}
-
+    
   }
   public void mineCheck(int x, int y) {
     if (mineField[x][y]=='M') {
