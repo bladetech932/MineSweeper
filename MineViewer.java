@@ -37,21 +37,35 @@ class MineViewer extends JFrame {
 		setResizable(false);//set to false on deployment
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     // menubar init
-    Container contentpane = getContentPane();
+    Container container = getContentPane();
     JMenuBar menuBar = new JMenuBar();
     menuBar.add(getFileMenu(this));
-    menuBar.add(getNewGameMenu(this));
-    contentpane.add(menuBar, BorderLayout.NORTH);
+    menuBar.add(getGameMenu(this));
+    container.add(menuBar, BorderLayout.NORTH);
 
     panel = new JPanel();
     panel.setLayout(new GridLayout(model.getRows(),model.getColumns()));
+    container.add(panel);
 
     buildButtonArray(model.getRows(), model.getColumns());  //init grid buttons
 
-    //pane = this.getContentPane(); pane. if contentpane is needed
     add(panel);
   }
 
+  public void newGame(MineModel model) {
+    this.model = model;
+    getContentPane().remove(panel);
+    panel = new JPanel();
+    panel.setLayout(new GridLayout(model.getRows(),model.getColumns()));
+    getContentPane().add(panel);
+    buildButtonArray(model.getRows(), model.getColumns());
+    getContentPane().invalidate();
+		getContentPane().validate();
+		repaint();
+    System.out.println(model.getColumns());
+    System.out.println(model.getRows());
+
+  }
   private void buildButtonArray(int rows, int columns){
     btn = new JButton[rows][columns];
 		for (int i = 0; i < rows; i++) {
@@ -65,7 +79,7 @@ class MineViewer extends JFrame {
 		}
   }
 
-  private int[] initCustomGame(){
+  public int[] initCustomGame(){
     JPanel customPanel = new JPanel();
     int[] customSettings = {10,10,10};
     JTextField rowNum = new JTextField(5);
@@ -100,17 +114,17 @@ class MineViewer extends JFrame {
 		JMenuItem load = new JMenuItem("Load");
 		JMenuItem quit = new JMenuItem("Quit");
 
-		//load.addActionListener(new MenuListener(MineModel.LOAD, viewer));
-		//save.addActionListener(new MenuListener(MineModel.SAVE, viewer));
-		//quit.addActionListener(new MenuListener(MineModel.QUIT));
+		load.addActionListener(new MineController(MineModel.LOAD, viewer));
+	  save.addActionListener(new MineController(MineModel.SAVE, viewer));
+		quit.addActionListener(new MineController(MineModel.QUIT));
 
-		file.add(load);
 		file.add(save);
+		file.add(load);
 		file.add(quit);
 		return file;
   }
 
-  public JMenu getNewGameMenu(MineViewer view) {
+  public JMenu getGameMenu(MineViewer viewer) {
     // The JMenuBar that will Control the Elements
 
 		// The NewGame Menu elements
@@ -121,10 +135,10 @@ class MineViewer extends JFrame {
 		JMenuItem custom = new JMenuItem("Custom");
 
 		// Adding Action Listener to the elements
-		//easy.addActionListener(new MenuListener(GameLogic.NEW_GAME,GameLogic.EASY, frame));
-		//medium.addActionListener(new MenuListener(GameLogic.NEW_GAME,GameLogic.MEDIUM, frame));
-		//hard.addActionListener(new MenuListener(GameLogic.NEW_GAME,GameLogic.HARD, frame));
-		//custom.addActionListener(new MenuListener(GameLogic.NEW_GAME,GameLogic.CUSTOM, frame));
+		easy.addActionListener(new MineController(MineModel.EASY, viewer));
+		medium.addActionListener(new MineController(MineModel.MEDIUM, viewer));
+		hard.addActionListener(new MineController(MineModel.HARD, viewer));
+		custom.addActionListener(new MineController(MineModel.CUSTOM, viewer));
 
 		// Adding them to the newGame Menu
 		newGame.add(easy);

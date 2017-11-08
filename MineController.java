@@ -6,6 +6,7 @@ import java.util.*;
 class MineController extends MouseAdapter implements ActionListener {
   MineModel model;
   MineViewer viewer;
+  int menuItem;
 
   MineController(){}//empty constructor
 
@@ -14,12 +15,34 @@ class MineController extends MouseAdapter implements ActionListener {
     this.viewer = viewer;
   }
   MineController(int menuItem, MineViewer viewer) {
-    
+    this.menuItem = menuItem;
+    this.viewer = viewer;
+  }
+  MineController(int menuItem){
+    this.menuItem = menuItem;
   }
 
-  @Overide
-  public void actionPreformed(ActionEvent e) {
-    System.out.println("test");
+  @Override
+  public void actionPerformed(ActionEvent e) {
+
+    if(menuItem == MineModel.SAVE) {
+      System.out.println("save");
+    }
+    if(menuItem == MineModel.LOAD) {
+      System.out.println("load");
+    }
+    if(menuItem == MineModel.QUIT) {
+      System.exit(0);
+    }
+    if(menuItem == MineModel.CUSTOM) {
+				 int[] gameSettings = viewer.initCustomGame();
+				 MineModel model = new MineModel(gameSettings);
+         viewer.newGame(model);
+		}
+    else {
+				MineModel model = new MineModel(menuItem);
+        viewer.newGame(model);
+		}
   }
   public void mouseReleased(MouseEvent e) {
 
