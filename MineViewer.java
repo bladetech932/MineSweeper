@@ -134,47 +134,51 @@ class MineViewer extends JFrame {
 		return newGame;
 	}
 
-  public void updateField(char[][] mineField, char[][] playField){
-    for (int i = 0;i<mineField.length;i++) {
-      for (int j = 0;j<mineField[0].length;j++) {
+  public void updateField(char[][] playField, char[][] playField){
+    for (int i = 0;i<playField.length;i++) {
+      for (int j = 0;j<playField[0].length;j++) {
         if (mineField[i][j]=='M') {
           btn[i][j].setIcon(imageMine);
+        }
+        else if (playField[i][j]=='X') {
+          btn[i][j].setIcon(imageMine);
+          btn[i][j].setBackground(Color.RED);
         }
         else if (playField[i][j]=='F') {
           btn[i][j].setIcon(imageFlag);
         }
-        else if (mineField[i][j]=='0') {
+        else if (playField[i][j]=='0') {
           btn[i][j].setBackground(superGrey);
         }
-        else if (mineField[i][j]=='1') {
+        else if (playField[i][j]=='1') {
           btn[i][j].setBackground(superGrey);
           btn[i][j].setIcon(imageOne);
         }
-        else if (mineField[i][j]=='2') {
+        else if (playField[i][j]=='2') {
           btn[i][j].setBackground(superGrey);
           btn[i][j].setIcon(imageTwo);
         }
-        else if (mineField[i][j]=='3') {
+        else if (playField[i][j]=='3') {
           btn[i][j].setBackground(superGrey);
           btn[i][j].setIcon(imageThree);
         }
-        else if (mineField[i][j]=='4') {
+        else if (playField[i][j]=='4') {
           btn[i][j].setBackground(superGrey);
           btn[i][j].setIcon(imageFour);
         }
-        else if (mineField[i][j]=='5') {
+        else if (playField[i][j]=='5') {
           btn[i][j].setBackground(superGrey);
           btn[i][j].setIcon(imageFive);
         }
-        else if (mineField[i][j]=='6') {
+        else if (playField[i][j]=='6') {
           btn[i][j].setBackground(superGrey);
           btn[i][j].setIcon(imageSix);
         }
-        else if (mineField[i][j]=='7') {
+        else if (playField[i][j]=='7') {
           btn[i][j].setBackground(superGrey);
           btn[i][j].setIcon(imageSeven);
         }
-        else if (mineField[i][j]=='8') {
+        else if (playField[i][j]=='8') {
           btn[i][j].setBackground(superGrey);
           btn[i][j].setIcon(imageEight);
         }
