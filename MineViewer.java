@@ -122,12 +122,18 @@ class MineViewer extends JFrame {
 
     JOptionPane.showConfirmDialog(this, customPanel, "Game Selection",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null);
+
     try {
       customSettings[0] = Integer.parseInt(rowNum.getText());
       customSettings[1] = Integer.parseInt(columnNum.getText());
       customSettings[2] = Integer.parseInt(mineNum.getText());
     }
     catch(NumberFormatException ex) {}
+      if((customSettings[0]*customSettings[1]) < customSettings[2]){
+        System.out.println("HERE");
+        JOptionPane.showMessageDialog(this, "Mine count exceeds available spaces!");
+        customSettings = initCustomGame();
+      }
     return customSettings;
   }
 

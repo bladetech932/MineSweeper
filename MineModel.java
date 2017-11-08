@@ -131,7 +131,10 @@ class MineModel implements Serializable {
   }
 
   public void mineCheck(int x, int y) {
-    if(mineField[x][y]=='M') {
+    if (playField[x][y] == 'F') {
+      
+    }
+    else if(mineField[x][y]=='M') {
       mineField[x][y] = 'X';
       playField = mineField;
     }
@@ -186,7 +189,7 @@ class MineModel implements Serializable {
   }
 
   public void saveObj(MineModel mine, String filePath){
-      
+
          try {
             ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(new File(filePath)));
             outputStream.writeObject(mine);
