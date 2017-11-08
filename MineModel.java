@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 class MineModel implements Serializable {
 
   private static final long serialVersionUID = 42l;
+=======
+import javax.swing.*;
+import java.awt.*;
+class MineModel {
+>>>>>>> 418f539c53300ab5e5c2691a839da121e9272116
 
   MineViewer viewer;
   public static final int CUSTOM = 0;
@@ -180,6 +186,23 @@ class MineModel implements Serializable {
 
   }
 
-  public void saveGame(){}
+  public void saveGame(){
+
+    
+
+         try {
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(new File(filePath)));
+            outputStream.writeObject(this);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+       }
+       else{
+         System.out.println("Save Cancled");
+       }
+  }
   public void loadGame(){}
 }
