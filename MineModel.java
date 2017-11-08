@@ -18,9 +18,10 @@ class MineModel {
   private final int hardGridSize = 24;
   private final int hardMineCount = 99;
 
-  public static final int NEW = 3;
-  public static final int SAVE = 3;
-  public static final int LOAD = 3;
+  public static final int SAVE = 11;
+  public static final int LOAD = 12;
+  public static final int QUIT = 13;
+
 
   private int gameMode = 0;
   private int mineCount = 0;
@@ -49,7 +50,6 @@ class MineModel {
         mineField = new char[medGridSize][medGridSize];
         playField = new char[medGridSize][medGridSize];
         mineCount = medMineCount;
-
         break;
       case HARD:
         mineField = new char[hardGridSize][hardGridSize];
