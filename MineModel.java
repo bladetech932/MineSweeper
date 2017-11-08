@@ -130,6 +130,7 @@ class MineModel {
     }
     else if(mineField[x][y] == '0') {
       playField[x][y] = mineField[x][y];
+      showZeros(x,y);
     }
     else {
       playField[x][y] = mineField[x][y];
@@ -155,7 +156,24 @@ class MineModel {
         catch(IndexOutOfBoundsException e){}
   }
 
-  public void showZeros(){}
+  public void showZeros(int x, int y){
+
+      for (int i = x-1;i<=x+1 ;i++ ) {
+        for (int j= y-1;j<=y+1 ;j++ ) {
+          try{
+            if(mineField[i][j] == '0'){
+              playField[i][j] = mineField[i][j];
+              System.out.println(i);
+              System.out.println(j);
+              //showZeros(i,j);
+             }
+          }
+          catch(Exception ex){
+          }
+        }
+      }
+
+  }
 
   public void saveGame(){}
   public void loadGame(){}
