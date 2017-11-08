@@ -66,6 +66,14 @@ class MineViewer extends JFrame {
     System.out.println(model.getRows());
 
   }
+  public void saveGame(){
+    String filePath = "";
+    JFileChooser jFileChooser = new JFileChooser();
+    int returnVal = jFileChooser.showSaveDialog(null);
+    if(returnVal == JFileChooser.APPROVE_OPTION){
+      filePath = jFileChooser.getSelectedFile().getPath();
+      
+  }
   private void buildButtonArray(int rows, int columns){
     btn = new JButton[rows][columns];
 		for (int i = 0; i < rows; i++) {

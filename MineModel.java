@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 class MineModel {
 
   MineViewer viewer;
@@ -181,7 +183,23 @@ class MineModel {
 
   }
 
-  public void saveGame(){}
+  public void saveGame(){
+
+    
+
+         try {
+            ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(new File(filePath)));
+            outputStream.writeObject(this);
+            outputStream.flush();
+            outputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+       }
+       else{
+         System.out.println("Save Cancled");
+       }
+  }
   public void loadGame(){}
-  public void newGame(){}
 }
