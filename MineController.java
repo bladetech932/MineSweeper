@@ -28,13 +28,13 @@ class MineController extends MouseAdapter implements ActionListener {
     if(menuItem == MineModel.SAVE) {
       System.out.println("save");
     }
-    if(menuItem == MineModel.LOAD) {
+    else if(menuItem == MineModel.LOAD) {
       System.out.println("load");
     }
-    if(menuItem == MineModel.QUIT) {
+    else if(menuItem == MineModel.QUIT) {
       System.exit(0);
     }
-    if(menuItem == MineModel.CUSTOM) {
+    else if(menuItem == MineModel.CUSTOM) {
 				 int[] gameSettings = viewer.initCustomGame();
 				 MineModel model = new MineModel(gameSettings);
          viewer.newGame(model);
