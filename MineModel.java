@@ -162,10 +162,16 @@ class MineModel {
         for (int j= y-1;j<=y+1 ;j++ ) {
           try{
             if(mineField[i][j] == '0'){
-              playField[i][j] = mineField[i][j];
-              System.out.println(i);
-              System.out.println(j);
-              //showZeros(i,j);
+              if(playField[i][j] != '0'){
+                playField[i][j] = mineField[i][j];
+                System.out.println(i);
+                System.out.println(j);
+                showZeros(i,j);
+              }
+
+             }
+             else{
+               playField[i][j] = mineField[i][j];
              }
           }
           catch(Exception ex){
