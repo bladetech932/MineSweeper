@@ -183,6 +183,7 @@ class MineViewer extends JFrame {
         }
         else if (playField[i][j]=='F') {
           btn[i][j].setIcon(imageFlag);
+          btn[i][j].setBackground(superGrey);
         }
         else if (playField[i][j]=='0') {
           btn[i][j].setBackground(superGrey);
