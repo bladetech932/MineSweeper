@@ -3,13 +3,23 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-class MineController extends MouseAdapter {
+class MineController extends MouseAdapter implements ActionListener {
   MineModel model;
   MineViewer viewer;
+
   MineController(){}//empty constructor
-  MineController(MineModel model, MineViewer viewer){
+
+  MineController(MineModel model, MineViewer viewer) {
     this.model = model;
     this.viewer = viewer;
+  }
+  MineController(int menuItem, MineViewer viewer) {
+    
+  }
+
+  @Overide
+  public void actionPreformed(ActionEvent e) {
+    System.out.println("test");
   }
   public void mouseReleased(MouseEvent e) {
 
