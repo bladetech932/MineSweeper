@@ -35,7 +35,7 @@ class MineModel {
     playField = new char[customSettings[0]][customSettings[1]];
     setPlayField();
     setMineField();
-    setMine(customMineCount);
+    setMines(customMineCount);
   }
   public MineModel(int gameMode) { //preset mode selection
     this.gameMode = gameMode;
@@ -62,7 +62,7 @@ class MineModel {
     }
     setPlayField();
     setMineField();
-    setMine(mineCount);
+    setMines(mineCount);
   }
 
   //getter methods
@@ -72,7 +72,38 @@ class MineModel {
   public int getColumns() {
     return playField[0].length;
   }
-  public void setMine(int mineCount){
+  public char[][] getMineField() {
+    return mineField;
+  }
+  public char[][] getPlayField(){
+    return playField;
+  }
+
+  public void setFlag(int x, int y) {
+
+    if(playField[x][y] !='F') {
+      playField[x][y] = 'F';
+    }
+    else if(playField[x][y] == 'F') {
+      playField[x][y] = 'U';
+    }
+
+  }
+  public void setPlayField(){
+    for (int i=0;i<playField.length; i++) {
+      for (int j=0;j<playField[i].length; j++){
+        playField[i][j] = 'U';
+      }
+    }
+  }
+  public void setMineField(){
+    for (int i=0;i<mineField.length; i++) {
+      for (int j=0;j<mineField[i].length; j++){
+        mineField[i][j] = '0';
+      }
+    }
+  }
+  public void setMines(int mineCount){
       int x;
       int y;
       int count = 0;
@@ -92,43 +123,18 @@ class MineModel {
      }
   }
 
-  public void setFlag(int x, int y) {
-
-    if(playField[x][y] !='F') {
-      playField[x][y] = 'F';
-    }
-    else if(playField[x][y] == 'F') {
-      playField[x][y] = 'U';
-    }
-
-  }
   public void mineCheck(int x, int y) {
-    if (mineField[y][x]=='M') {
+    if(mineField[x][y]=='M') {
+      mineField[x][y] = 'X';
       playField = mineField;
     }
-  }
-  public char[][] getMineField() {
-    return mineField;
-  }
-  public char[][] getPlayField(){
-    return playField;
-  }
-
-  public void setPlayField(){
-    for (int i=0;i<playField.length; i++) {
-      for (int j=0;j<playField[i].length; j++){
-        playField[i][j] = 'U';
-      }
+    else if(mineField[x][y] == '0') {
+      playField[x][y] = mineField[x][y];
+    }
+    else {
+      playField[x][y] = mineField[x][y];
     }
   }
-  public void setMineField(){
-    for (int i=0;i<mineField.length; i++) {
-      for (int j=0;j<mineField[i].length; j++){
-        mineField[i][j] = '0';
-      }
-    }
-  }
-
   public void mineCounter(int x, int y){
 
         try {if(mineField[y-1][x] != 'M')   {mineField[y-1][x]++;}}
@@ -149,4 +155,9 @@ class MineModel {
         catch(IndexOutOfBoundsException e){}
   }
 
+  public void showZeros(){}
+
+  public void saveGame(){}
+  public void loadGame(){}
+  public void newGame(){}
 }
