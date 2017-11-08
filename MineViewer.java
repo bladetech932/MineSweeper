@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
+import java.io.*;
 
 class MineViewer extends JFrame {
   private MineModel model;
@@ -66,13 +67,27 @@ class MineViewer extends JFrame {
     System.out.println(model.getRows());
 
   }
-  public void saveGame(){
+  public void saveGame(MineModel mine){
     String filePath = "";
     JFileChooser jFileChooser = new JFileChooser();
     int returnVal = jFileChooser.showSaveDialog(null);
     if(returnVal == JFileChooser.APPROVE_OPTION){
       filePath = jFileChooser.getSelectedFile().getPath();
-      
+      System.out.println(filePath);
+      model.saveObj(model ,filePath);
+      //newGame();
+    }
+  }
+  public void loadGame(){
+    String filePath = "";
+    JFileChooser jFileChooser = new JFileChooser();
+    int returnVal = jFileChooser.showSaveDialog(null);
+    if(returnVal == JFileChooser.APPROVE_OPTION){
+      filePath = jFileChooser.getSelectedFile().getPath();
+      System.out.println(filePath);
+      newGame(model.loadObj(model ,filePath));
+    }
+    updateField(model.getMineField(),model.getPlayField());
   }
   private void buildButtonArray(int rows, int columns){
     btn = new JButton[rows][columns];

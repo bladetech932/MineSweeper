@@ -25,11 +25,11 @@ class MineController extends MouseAdapter implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
 
-    if(menuItem == MineModel.SAVE) {
-      model.loadGame();
+    if(menuItem == MineModel.LOAD) {
+      viewer.loadGame();
     }
-    else if(menuItem == MineModel.LOAD) {
-      model.saveGame();
+    else if(menuItem == MineModel.SAVE) {
+      viewer.saveGame(model);
     }
     else if(menuItem == MineModel.QUIT) {
       System.exit(0);
