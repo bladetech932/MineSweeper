@@ -18,6 +18,10 @@ class MineModel {
   private final int hardGridSize = 24;
   private final int hardMineCount = 99;
 
+  public static final int NEW = 3;
+  public static final int SAVE = 3;
+  public static final int LOAD = 3;
+
   private int gameMode = 0;
   private int mineCount = 0;
   private char[][] mineField;
