@@ -170,11 +170,8 @@ class MineModel {
                 System.out.println(j);
                 showZeros(i,j);
               }
-
              }
-             else{
-               playField[i][j] = mineField[i][j];
-             }
+             else{playField[i][j] = mineField[i][j];}
           }
           catch(Exception ex){
           }
