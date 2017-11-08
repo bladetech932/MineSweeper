@@ -54,12 +54,12 @@ class MineController extends MouseAdapter implements ActionListener {
     int y = Integer.parseInt(str.substring(index+1,str.length()));
 
     if (SwingUtilities.isLeftMouseButton(e) == true) {
-      System.out.println("Left ");
-      System.out.println(tempBtn.getName());
+      //System.out.println("Left ");
+      //System.out.println(tempBtn.getName());
       model.mineCheck(x,y);
     }
     if (SwingUtilities.isRightMouseButton(e) == true) {
-      System.out.println(tempBtn.getName());
+      //System.out.println(tempBtn.getName());
       model.setFlag(x,y);
     }
     viewer.updateField(model.getMineField(),model.getPlayField());

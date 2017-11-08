@@ -132,7 +132,7 @@ class MineModel implements Serializable {
 
   public void mineCheck(int x, int y) {
     if (playField[x][y] == 'F') {
-      
+
     }
     else if(mineField[x][y]=='M') {
       mineField[x][y] = 'X';
@@ -174,8 +174,6 @@ class MineModel implements Serializable {
             if(mineField[i][j] == '0'){
               if(playField[i][j] != '0'){
                 playField[i][j] = mineField[i][j];
-                System.out.println(i);
-                System.out.println(j);
                 showZeros(i,j);
               }
              }

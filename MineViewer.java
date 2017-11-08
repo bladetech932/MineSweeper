@@ -63,8 +63,6 @@ class MineViewer extends JFrame {
     getContentPane().invalidate();
 		getContentPane().validate();
 		repaint();
-    System.out.println(model.getColumns());
-    System.out.println(model.getRows());
 
   }
   public void saveGame(MineModel mine){
@@ -73,7 +71,6 @@ class MineViewer extends JFrame {
     int returnVal = jFileChooser.showSaveDialog(null);
     if(returnVal == JFileChooser.APPROVE_OPTION){
       filePath = jFileChooser.getSelectedFile().getPath();
-      System.out.println(filePath);
       model.saveObj(model ,filePath);
       //newGame();
     }
@@ -84,7 +81,6 @@ class MineViewer extends JFrame {
     int returnVal = jFileChooser.showSaveDialog(null);
     if(returnVal == JFileChooser.APPROVE_OPTION){
       filePath = jFileChooser.getSelectedFile().getPath();
-      System.out.println(filePath);
       newGame(model.loadObj(model ,filePath));
     }
     updateField(model.getMineField(),model.getPlayField());
@@ -130,7 +126,6 @@ class MineViewer extends JFrame {
     }
     catch(NumberFormatException ex) {}
       if((customSettings[0]*customSettings[1]) < customSettings[2]){
-        System.out.println("HERE");
         JOptionPane.showMessageDialog(this, "Mine count exceeds available spaces!");
         customSettings = initCustomGame();
       }
