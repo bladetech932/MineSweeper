@@ -1,4 +1,6 @@
-class MineModel {
+class MineModel implements Serializable {
+
+  private static final long serialVersionUID = 42l;
 
   MineViewer viewer;
   public static final int CUSTOM = 0;
